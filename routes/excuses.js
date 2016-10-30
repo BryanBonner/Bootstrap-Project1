@@ -1,13 +1,8 @@
 var express = require('express'),
-    app = express(),
-    mongodb = require('mongodb'),
-    mongoose = require('mongoose'),
     router = express.Router(),
-    bodyParser = require('body-parser'),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy,
     Excuse = require('../models/excuse');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
 
 // POST - excuses
 router.post("/submitExcuse", function(req, res) {
@@ -24,7 +19,6 @@ router.post("/submitExcuse", function(req, res) {
         }
         return res.status(200).send();
     });
-
 });
 
 // GET - excuses
